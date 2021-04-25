@@ -1,0 +1,23 @@
+.navbar-nav .navbar-center {
+    position: absolute;
+    left: 80%;
+    transform: translatex(-50%);
+    size: 50px;
+}
+
+.texteheader {
+    font-weight: 900;
+    color: gold;
+    font-size: 35px;
+}
+
+.social-media {
+    position: relative;
+    left: 1%;
+}
+
+.navbar-nav {
+    border-radius: 10px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, .25);
+    padding: 16px 20px;
+}
