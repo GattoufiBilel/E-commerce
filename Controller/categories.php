@@ -1,7 +1,9 @@
 <?php
 
 //Connextion vers BD
-include "connect.php";
+//include "Config/connect.php";
+$conn = getConnextion();
+
 
 // Creation de la Requette selectionner toute les categorie
     $req = "SELECT * FROM categories" ;
@@ -13,3 +15,4 @@ include "connect.php";
     $categories = $res->fetchAll() ;
 
 //var_dump($categories);
+

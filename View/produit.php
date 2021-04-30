@@ -1,18 +1,13 @@
 <?php
 //Connextion vers BD
-include "Config/connect.php";
-include "Controller/categories.php";
-include "Controller/produits.php";
+include "../Config/connect.php";
+include "../Controller/categories.php";
+include "../Controller/produits.php";
 
-if (!empty($_POST)) {
-    echo "Produit chercher est ".$_POST['search'] ;
-    $produits=searchProduits($_POST['search']) ;
-}
-else {
-    $produits = getAllProducts();
+if (isset($_GET['id'])) {
+    $produit = getProduitById($_GET['id']) ; 
 }
 
-//$produits = getAllProducts();
 
 ?>
 
@@ -42,28 +37,24 @@ else {
 
     <!-- debut navbar-->
    <?php
-     include "inc/header.php" ;
+     include "../inc/header.php" ;
    ?>
     <!-- fin nav bar -->
 
     <!-- Liste du produits -->
 <div class="container">
     <div class="row col-12 mt-4">
-        <?php
-            foreach ($produits as $produit){
-                print ' <div class="col-3 mb-4">
-                <div class="card" style="width: 18rem;">
-                    <img src=" '.$produit['image'].' " class="card-img-top" alt="..." width="50px" hieght="50px">
-                    <div class="card-body">
-                        <h5 class="card-title">'.$produit['nom'].'</h5>
-                        <p class="card-text">'.$produit['description'].'</p>
-                        <a href="View/produit.php?id='.$produit['id'].' "class="btn btn-primary">Afficher</a>
-                </div>
-                </div>
-                </div>' ;
-            }
-
-        ?>
+        <div class="card col-8 offset-2">
+        <img src="<?php echo $produit['image'] ; ?>" class="card-img-top" alt="produit">
+        <div class="card-body">
+            <h5 class="card-title"><?php echo $produit['nom'] ; ?> </h5>
+            <p class="card-text"><?php echo $produit['description'] ; ?></p>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><?php echo $produit['prix'] ; ?> DT</li>
+            <li class="list-group-item">Catégorie : <?php echo $produit['categorie'] ; ?></li>
+        </ul>
+        </div>
     </div>
 </div>
     <!-- fin liste des produits -->
@@ -72,7 +63,7 @@ else {
     <!-- footer-->
 
     <?php
-    include "inc/footer.php";
+    include "../inc/footer.php";
     ?>
     <!-- fin footer -->
 
