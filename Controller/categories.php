@@ -1,18 +1,29 @@
 <?php
 
-//Connextion vers BD
-//include "Config/connect.php";
-$conn = getConnextion();
 
 
-// Creation de la Requette selectionner toute les categorie
-    $req = "SELECT * FROM categories" ;
+class Crud_categorie {
 
-// execution de la req
-    $res = $conn->query($req) ;
+    private $conn ; 
 
-// affiche resultats
-    $categories = $res->fetchAll() ;
+    function __construct(){
+        $obj = new Config(); 
+        $this->conn = $obj->getConnexion(); 
+    }
+     
+        function getAllCategories() {
+            $req = "SELECT * FROM categories" ;
 
-//var_dump($categories);
+        // execution de la req
+            $res = $this->conn->query($req) ;
 
+        // affiche resultats
+            $categories = $res->fetchAll() ;
+
+        //var_dump($categories);
+
+            return $categories ; 
+
+    }
+}
+?>

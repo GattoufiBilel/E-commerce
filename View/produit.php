@@ -4,10 +4,12 @@ include "../Config/connect.php";
 include "../Controller/categories.php";
 include "../Controller/produits.php";
 
-if (isset($_GET['id'])) {
-    $produit = getProduitById($_GET['id']) ; 
-}
+$crud_product = new Crud_produit(); 
+//$produit = $product->getProduitById($_GET['id']) ; 
 
+if (isset($_GET['id'])) {
+    $produit = $crud_product->getProduitById($_GET['id']) ; 
+}
 
 ?>
 
@@ -45,7 +47,7 @@ if (isset($_GET['id'])) {
 <div class="container">
     <div class="row col-12 mt-4">
         <div class="card col-8 offset-2">
-        <img src="<?php echo $produit['image'] ; ?>" class="card-img-top" alt="produit">
+        <img src="$produit['image']" class="card-img-top" alt="produit">
         <div class="card-body">
             <h5 class="card-title"><?php echo $produit['nom'] ; ?> </h5>
             <p class="card-text"><?php echo $produit['description'] ; ?></p>

@@ -10,6 +10,10 @@ projet ecommerce : check liste
 *tester connexion 
  
 
+Bibliotheque utli : 
+Bootstrap 
+javascript sweetalert2 
+
 
 
 

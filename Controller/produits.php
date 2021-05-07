@@ -1,51 +1,57 @@
 <?php
 
+class Crud_produit {
+       
+        private $conn ; 
+        function __construct(){
+            $obj = new Config(); 
+            $this->conn = $obj->getConnexion(); 
+        }
+         
+ 
 
-function getAllProducts() {
+        function getAllProducts() {
+        
+        // Creation de la Requette selectionner toute les categorie
+            $req = "SELECT * FROM produits" ;
 
-//Connextion vers BD
-$conn = getConnextion();
+        // execution de la req
+            $res = $this->conn->query($req) ;
 
-// Creation de la Requette selectionner toute les categorie
-    $req = "SELECT * FROM produits" ;
+        // affiche resultats
+            $produits = $res->fetchAll() ;
 
-// execution de la req
-    $res = $conn->query($req) ;
+        //var_dump($produits);
 
-// affiche resultats
-    $produits = $res->fetchAll() ;
+        return $produits;
 
-//var_dump($produits);
+        }
 
-return $produits;
+        function searchProduits($keyword){
 
-}
 
-function searchProduits($keyword){
+        // Creation de la Requette selectionner toute les categorie
+        $req = "SELECT * FROM PRODUITS WHERE nom LIKE '%$keyword%' ";
+        // execution de la req
+        $res = $this->conn->query($req) ;
 
-//Connextion vers BD
-$conn = getConnextion();
+        // affiche resultats
+        $produits = $res->fetchAll() ;
 
-// Creation de la Requette selectionner toute les categorie
-$req = "SELECT * FROM PRODUITS WHERE nom LIKE '%$keyword%' ";
-// execution de la req
-$res = $conn->query($req) ;
+        //var_dump($produits);
 
-// affiche resultats
-$produits = $res->fetchAll() ;
+        return $produits;
 
-//var_dump($produits);
+        }
 
-return $produits;
+        function getProduitById($id) {
 
-}
+            
+            $req = " SELECT * FROM produits where id = $id ";
+            $res = $this->conn->query($req) ;
+            $produit = $res->fetch() ;
+            return $produit;
 
-function getProduitById($id) {
-
-    $conn = getConnextion();
-    $req = " SELECT * FROM produits where id = $id ";
-    $res = $conn->query($req) ;
-    $produit = $res->fetch() ;
-    return $produit;
+        }
 
 }

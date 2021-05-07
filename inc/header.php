@@ -15,7 +15,7 @@
 
     <!-- CSS-->
     <link rel="stylesheet" href="../style.css">
-</head>
+</head>    
 
 <body>
 <!--
@@ -70,6 +70,8 @@
                 </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <?php
+                                $crud_cat = new Crud_categorie(); 
+                                $categories = $crud_cat->getAllCategories(); 
                                 foreach ($categories as $categorie) {
                                     print '<li><a class="dropdown-item" href="#">'.$categorie['nom'].'</a></li> ' ; 
                                 }

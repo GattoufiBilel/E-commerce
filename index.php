@@ -4,12 +4,17 @@ include "Config/connect.php";
 include "Controller/categories.php";
 include "Controller/produits.php";
 
+
+$crud_pr = new Crud_produit(); 
+
 if (!empty($_POST)) {
     echo "Produit chercher est ".$_POST['search'] ;
-    $produits=searchProduits($_POST['search']) ;
+    //$produits=searchProduits($_POST['search']) ;
+    $crud_pr->searchProduits($_POST['search']) ;
 }
 else {
-    $produits = getAllProducts();
+    //$produits = getAllProducts();
+        $crud_pr->getAllProducts();
 }
 
 //$produits = getAllProducts();
@@ -50,10 +55,11 @@ else {
 <div class="container">
     <div class="row col-12 mt-4">
         <?php
+            $produits=$crud_pr->getAllProducts(); 
             foreach ($produits as $produit){
                 print ' <div class="col-3 mb-4">
                 <div class="card" style="width: 18rem;">
-                    <img src=" '.$produit['image'].' " class="card-img-top" alt="..." width="50px" hieght="50px">
+                    <img src="images/produits/'.$produit['image'].' " class="card-img-top" alt="..." width="50px" hieght="50px">
                     <div class="card-body">
                         <h5 class="card-title">'.$produit['nom'].'</h5>
                         <p class="card-text">'.$produit['description'].'</p>
