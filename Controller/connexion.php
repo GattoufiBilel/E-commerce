@@ -1,3 +1,8 @@
+<?php
+session_start();
+?>
+
+
 <!DOCTYPE html>
 <html lang=fr dir="ltr">
   <head>
@@ -18,13 +23,14 @@ include "../Model/CrudVisiteurs.php";
 if (isset($_POST['verif']))
 {
 
-        //$_session['email'] = $_post['email'];
+        $_SESSION['email'] = $_post['email'];
         $email = $_POST['email'];
         $mp = $_POST['mp'];
 
 
         $crud_user = new Crud_Visiteur();
         $res = $crud_user->ChercherUser($email,$mp);
+
 
 ?>
 
@@ -43,7 +49,7 @@ if (isset($_POST['verif']))
                                 timer: 4000
                             })
                      </script> " ;
-                    header('Refresh:3; http://localhost/Ecommerce/') ;
+                    header('Refresh:3; http://localhost/Ecommerce/View/profile.php') ;
 
             }
 
@@ -64,5 +70,6 @@ if (isset($_POST['verif']))
                           header('Refresh:2; ../View/connexion.php') ;
                     }
 }
+
 
 ?>
