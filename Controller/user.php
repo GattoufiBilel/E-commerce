@@ -1,4 +1,4 @@
-!<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang=fr dir="ltr">
   <head>
     <meta charset="utf-8">
@@ -24,7 +24,6 @@ if (!empty($_POST['Add']))
         $email = $_POST['email'] ;
         $mp = $_POST['mp'] ;
         $telephone = $_POST['telephone'] ;
-
         $user = new Visiteurs ($nom,$prenom,$email,$mp,$telephone) ;
         $Crud_user = new Crud_Visiteur() ;
         $Crud_user->AjouterUser($user);

@@ -14,8 +14,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
 
     <!-- CSS-->
-    <link rel="stylesheet" href="../style.css">
-</head>    
+    <link rel="stylesheet">
+</head>
 
 <body>
 <!--
@@ -70,10 +70,10 @@
                 </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <?php
-                                $crud_cat = new Crud_categorie(); 
-                                $categories = $crud_cat->getAllCategories(); 
+                                $crud_cat = new Crud_categorie();
+                                $categories = $crud_cat->getAllCategories();
                                 foreach ($categories as $categorie) {
-                                    print '<li><a class="dropdown-item" href="#">'.$categorie['nom'].'</a></li> ' ; 
+                                    print '<li><a class="dropdown-item" href="#">'.$categorie['nom'].'</a></li> ' ;
                                 }
                             ?>
                         </ul>
@@ -88,9 +88,9 @@
                     </li>
 
                 </ul>
-                <form class="d-flex" action="index.php" method="POST">
+                <form class="d-flex" action="../Controller/chercherProduits.php" method="POST">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+                    <button class="btn btn-outline-success" type="submit" name="search">Search</button>
                 </form>
             </div>
         </div>

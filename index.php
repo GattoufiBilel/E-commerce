@@ -5,7 +5,7 @@ include "Controller/categories.php";
 include "Controller/produits.php";
 
 
-$crud_pr = new Crud_produit(); 
+$crud_pr = new Crud_produit();
 
 if (!empty($_POST)) {
     echo "Produit chercher est ".$_POST['search'] ;
@@ -39,7 +39,7 @@ else {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
 
     <!-- CSS-->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" >
 
 </head>
 
@@ -55,7 +55,7 @@ else {
 <div class="container">
     <div class="row col-12 mt-4">
         <?php
-            $produits=$crud_pr->getAllProducts(); 
+            $produits=$crud_pr->getAllProducts();
             foreach ($produits as $produit){
                 print ' <div class="col-3 mb-4">
                 <div class="card" style="width: 18rem;">

@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -14,16 +14,18 @@
 <body>
 
     <!-- debut navbar-->
-
+    <?php
+        include "../inc/header.php" ;
+    ?>
 
     <!-- fin nav bar -->
-    
+
 
     <!-- formulaire registre peut etre lmochkel mel formulaire donc behc n3awid ha -->
     <div class="col-8 m-5">
         <h1 class="text-center"> Registre </h1>
         <form action="../Controller/user.php" method="POST">
-            
+
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Nom</label>
                 <input type="text" name="nom" class="form-control"  aria-describedby="nom">

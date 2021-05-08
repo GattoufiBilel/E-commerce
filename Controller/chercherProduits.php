@@ -1,9 +1,3 @@
-<?php
-session_start();
-
-
-?>
-
 
 <!DOCTYPE html>
 <html lang=fr dir="ltr">
@@ -18,24 +12,17 @@ session_start();
 <?php
 
 include "../Config/connect.php" ;
-include "../Model/CrudVisiteurs.php";
+include "../Model/CrudProduits.php" ;
 //include "../Model/visiteur.php";
 
 
-if (isset($_POST['verif']))
+if (isset($_POST['search']))
 {
+        $nom= $_POST['search'];
 
 
-        $email = $_POST['email'];
-        $mp = $_POST['mp'];
-
-
-        $crud_user = new Crud_Visiteur();
-        $res = $crud_user->ChercherUser($email,$mp);
-
-        $_SESSION['nom'] =    $res['nom'];
-        $_SESSION['prenom'] = $res['prenom'];
-        $_SESSION['email'] =  $res['email'];
+        $crud_prod = new Crud_Produit();
+        $res = $crud_prod->ChercherProd($nom);
 
 ?>
 
@@ -54,7 +41,7 @@ if (isset($_POST['verif']))
                                 timer: 4000
                             })
                      </script> " ;
-                    header('Refresh:3; http://localhost/Ecommerce/View/profile.php') ;
+                    header('Refresh:3; http://localhost/Ecommerce/') ;
 
             }
 
@@ -66,13 +53,13 @@ if (isset($_POST['verif']))
                               Swal.fire({
                                   position: 'top-center',
                                   icon: 'error',
-                                  title: 'Mail or Password incorrect 😟 ',
+                                  title: 'Produit Non trouvé 😟 ',
                                   showConfirmButton: false,
                                   timer: 4000
                               })
                           </script> " ;
 
-                          header('Refresh:2; ../View/connexion.php') ;
+                          header('Refresh:2;  http://localhost/Ecommerce/') ;
                     }
 }
 

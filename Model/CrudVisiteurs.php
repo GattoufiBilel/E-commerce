@@ -19,6 +19,8 @@
            $mp=$visiteur->getMp();
            $telephone=$visiteur->getTelephone();
 
+
+
           $sql="insert into visiteurs (nom, prenom, email, mp, telephone) values ('$nom','$prenom','$email','$mp','$telephone')";
           $resultat=$this->cx->exec($sql);
           return($resultat);
